@@ -1,9 +1,7 @@
 <h1 class="text-blue">Ember League Table</h1>
 
-<GameResults /> 
+<GameResults @games={{ this.gameSimulator.games }}/> 
 
 <hr />
 
-<LeagueTable />
-
-{{ gameSimulator }}
+<LeagueTable @games={{ this.gameSimulator.games }}/>

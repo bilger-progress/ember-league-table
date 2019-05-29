@@ -2,9 +2,13 @@ import Service from '@ember/service';
 import { inject } from '@ember/service';
 import { later } from '@ember/runloop';
 import { shuffle } from 'ember-composable-helpers/helpers/shuffle';
+import { computed } from '@ember/object';
 
 export default Service.extend({
     store: inject(),
+    games: computed(function() {
+        return this.store.peekAll('game');
+    }),
     init() {
         this._super(...arguments);
         this.seedTeams();
