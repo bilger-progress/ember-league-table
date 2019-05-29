@@ -4,6 +4,8 @@ import { later } from '@ember/runloop';
 import { shuffle } from 'ember-composable-helpers/helpers/shuffle';
 import { computed } from '@ember/object';
 
+const DELAY_BETWEEN_GAMES = 100;
+
 export default Service.extend({
     store: inject(),
     games: computed(function() {
@@ -12,7 +14,7 @@ export default Service.extend({
     init() {
         this._super(...arguments);
         this.seedTeams();
-        later(this, this.simulateGame, 1000);
+        later(this, this.simulateGame, DELAY_BETWEEN_GAMES);
     },
     seedTeams() {
         const teamNames = ['Team 1', 'Team 2', 'Team 3', 'Team 4', 'Team 5'];
@@ -34,7 +36,7 @@ export default Service.extend({
             awayGoals,
             playedOn: new Date()
         });
-        later(this, this.simulateGame, 1000);
+        later(this, this.simulateGame, DELAY_BETWEEN_GAMES);
     },
     randomScore(maximumGoals){
         return Math.round(Math.random() * maximumGoals);
