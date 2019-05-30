@@ -8,5 +8,11 @@ export default Model.extend({
     homeGames: DS.hasMany('game', { inverse: 'homeTeam' }),
     awayGames: DS.hasMany('game', { inverse: 'awayTeam' }),
     playedGames: union('homeGames', 'awayGames'),
-    drawnGames: filterBy('playedGames', 'isDraw')
+    drawnGames: filterBy('playedGames', 'isDraw'),
+    homeGamesWon: filterBy('homeGames', 'isHomeWin'),
+    awayGamesWon: filterBy('awayGames', 'isAwayWin'),
+    wonGames: union('homeGamesWon', 'awayGamesWon'),
+    homeGamesLost: filterBy('homeGames', 'isAwayWin'),
+    awayGamesLost: filterBy('awayGames', 'isHomeWin'),
+    lostGames: union('homeGamesLost', 'awayGamesLost')
 });
