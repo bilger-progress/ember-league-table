@@ -11,5 +11,11 @@ export default Model.extend({
     playedOn: DS.attr('date'),
     isDraw: computed('homeGoals', 'awayGoals', function() {
         return this.homeGoals === this.awayGoals;
+    }),
+    isHomeWin: computed('homeGoals', 'awayGoals', function() {
+        return this.homeGoals > this.awayGoals;
+    }),
+    isAwayWin: computed('homeGoals', 'awayGoals', function() {
+        return this.homeGoals < this.awayGoals;
     })
 });
