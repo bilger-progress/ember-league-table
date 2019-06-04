@@ -1,5 +1,6 @@
 import DS from 'ember-data';
-import { union, filterBy } from '@ember/object/computed';
+import { union, filterBy, sum, mapBy } from '@ember/object/computed';
+import { computed } from '@ember/object';
 
 const { Model } = DS;
 
@@ -14,5 +15,19 @@ export default Model.extend({
     wonGames: union('homeGamesWon', 'awayGamesWon'),
     homeGamesLost: filterBy('homeGames', 'isAwayWin'),
     awayGamesLost: filterBy('awayGames', 'isHomeWin'),
-    lostGames: union('homeGamesLost', 'awayGamesLost')
+    lostGames: union('homeGamesLost', 'awayGamesLost'),
+    homeGoalsScoredArray: mapBy('homeGames', 'homeGoals'),
+    homeGoalsScored: sum('homeGoalsScoredArray'),
+    awayGoalsScoredArray: mapBy('awayGames', 'awayGoals'),
+    awayGoalsScored: sum('awayGoalsScoredArray'),
+    goalsScored: computed('homeGoalsScored', 'awayGoalsScored', function(){
+        return this.homeGoalsScored + this.awayGoalsScored;
+    }),
+    homeGoalsConcededArray: mapBy('homeGames', 'awayGoals'),
+    homeGoalsConceded: sum('homeGoalsConcededArray'),
+    awayGoalsConcededArray: mapBy('awayGames', 'homeGoals'),
+    awayGoalsConceded: sum('awayGoalsConcededArray'),
+    goalsConceded: computed('homeGoalsConceded', 'awayGoalsConceded', function(){
+        return this.homeGoalsConceded + this.awayGoalsConceded;
+    })
 });
