@@ -29,5 +29,11 @@ export default Model.extend({
     awayGoalsConceded: sum('awayGoalsConcededArray'),
     goalsConceded: computed('homeGoalsConceded', 'awayGoalsConceded', function(){
         return this.homeGoalsConceded + this.awayGoalsConceded;
+    }),
+    goalsDifference: computed('goalsScored', 'goalsConceded', function() {
+        return this.goalsScored - this.goalsConceded;
+    }),
+    points: computed('wonGames.lenth', 'drawnGames.length', function() {
+        return (this.wonGames.length * 3) + this.drawnGames.length;
     })
 });
