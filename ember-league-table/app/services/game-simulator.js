@@ -31,11 +31,7 @@ export default Service.extend({
             'Ludogorec',
             'Levski Sofia',
             'Arsenal',
-            'Cardiff City',
-            'CSKA',
-            'Fenerbahce',
-            'Galatasaray',
-            'Bursa Spor'
+            'Cardiff City'
         ];
         teamNames.forEach((item, index) => {
             this.store.createRecord('team', { id: index, name: item });
