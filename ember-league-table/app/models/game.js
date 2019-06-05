@@ -17,5 +17,14 @@ export default Model.extend({
     }),
     isAwayWin: computed('homeGoals', 'awayGoals', function() {
         return this.homeGoals < this.awayGoals;
+    }),
+    winningTeam: computed('isHomeWin', 'isAwayWin', 'homeTeam', 'awayTeam', function() {
+        if (this.isHomeWin) {
+            return this.homeTeam;
+        } else if (this.isAwayWin) {
+            return this.awayTeam;
+        } else {
+            return undefined;
+        }
     })
 });
