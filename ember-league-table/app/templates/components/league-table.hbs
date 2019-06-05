@@ -1,1 +1,42 @@
-League table
+<table class="w-full">
+    <thead class="bg-grey-lighter border-b-2 border-grey p-4 m-4 text-left align-bottom">
+        <th class="h-10 w-10"></th>
+        <th>Team</th>
+        <th>Played</th>
+        <th>Won</th>
+        <th>Drawn</th>
+        <th>Lost</th>
+        <th>For</th>
+        <th>Against</th>
+        <th>GD</th>
+        <th>Points</th>
+        <th>Form</th>
+    </thead>
+    {{#each (sort-by "points:desc" "goalsDifference:desc" @teams) as |team index|}}
+        <tr>
+            <td class="p-4">{{add 1 index}}</td>
+            <td class="font-bold">{{team.name}}</td>
+            <td>{{team.playedGames.length}}</td>
+            <td>{{team.wonGames.length}}</td>
+            <td>{{team.drawnGames.length}}</td>
+            <td>{{team.lostGames.length}}</td>
+            <td>{{team.goalsScored}}</td>
+            <td>{{team.goalsConceded}}</td>
+            <td>{{team.goalsDifference}}</td>
+            <td class="font-bold">{{team.points}}</td>
+            <td>
+               <div class="flex text-white text-sm text-center">
+                    {{#each (take 5 (sort-by "playedOn:desc" team.playedGames)) as |playedGame|}}
+                        {{#if playedGame.isDraw}}
+                            <span class="p-1 mr-1 bg-grey w-8">D</span>                    
+                        {{else if (eq playedGame.winningTeam.id team.id)}}
+                            <span class="p-1 mr-1 bg-green w-8">W</span>                    
+                        {{else}}
+                            <span class="p-1 mr-1 bg-red w-8">L</span>
+                        {{/if}}
+                    {{/each}}
+               </div>
+            </td>
+        </tr>
+    {{/each}}
+</table>
