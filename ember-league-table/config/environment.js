@@ -1,7 +1,16 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
+    firebase: {
+      apiKey: "AIzaSyASnlqru6K_WpxHqN8T0t-EBPE5QJbVbng",
+      authDomain: "ember-league-table.firebaseapp.com",
+      databaseURL: "https://ember-league-table.firebaseio.com",
+      projectId: "ember-league-table",
+      storageBucket: "ember-league-table.appspot.com",
+      messagingSenderId: "714585180192",
+      appId: "1:714585180192:web:7f5a430abb0d4fbc"
+    },
     modulePrefix: 'ember-league-table',
     environment,
     rootURL: '/',
