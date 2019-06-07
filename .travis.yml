@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 8
+script:
+  - cd ./ember-league-table/
+  - npm install
+  - npm install -g firebase-tools
+  - npm install -g ember-cli
+  - npm run build
+  - firebase deploy --only hosting --token $FIREBASE_TOKEN
+branches:
+  only:
+  - master
