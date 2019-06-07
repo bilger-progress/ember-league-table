@@ -44,6 +44,7 @@
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.10.0",
     "ember-welcome-page": "^4.0.0",
+    "emberfire": "^3.0.0-rc.3",
     "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-node": "^9.0.1",
     "loader.js": "^4.7.0",
