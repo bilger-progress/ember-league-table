@@ -14,6 +14,6 @@ export default Service.extend({
                 // TODO: Store - remove User.
                 this.router.transitionTo('sign-in');
             }
-        }))
+        }));
     }
 });
