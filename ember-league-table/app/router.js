@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('sign-in', { path: '/signIn' });
   this.route('dashboard', { path: '/dashboard' });
+  this.route('missing-route', { path: '/*path' });
 });
 
 export default Router;
